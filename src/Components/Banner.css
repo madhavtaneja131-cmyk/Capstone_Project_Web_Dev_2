@@ -1,0 +1,97 @@
+.banner {
+  position: relative;
+  height: 85vh;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: flex-end;
+}
+
+.banner-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to right,
+    rgba(0, 0, 0, 0.85) 40%,
+    transparent 100%
+  ),
+  linear-gradient(
+    to top,
+    #141414 2%,
+    transparent 50%
+  );
+}
+
+.banner-content {
+  position: relative;
+  z-index: 2;
+  padding: 0 50px 80px;
+  max-width: 550px;
+}
+
+.banner-genre {
+  color: #e50914;
+  font-size: 0.85rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+
+.banner-title {
+  font-size: 3.5rem;
+  font-weight: 900;
+  line-height: 1.1;
+  margin-bottom: 16px;
+  text-shadow: 2px 2px 10px rgba(0,0,0,0.5);
+}
+
+.banner-desc {
+  font-size: 1rem;
+  color: #d2d2d2;
+  line-height: 1.6;
+  margin-bottom: 24px;
+}
+
+.banner-buttons {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.btn-play {
+  background: #fff;
+  color: #000;
+  border: none;
+  padding: 12px 30px;
+  font-size: 1rem;
+  font-weight: 700;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.btn-play:hover {
+  background: #e5e5e5;
+}
+
+.btn-info {
+  background: rgba(109, 109, 110, 0.7);
+  color: #fff;
+  border: none;
+  padding: 12px 30px;
+  font-size: 1rem;
+  font-weight: 600;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.btn-info:hover {
+  background: rgba(109, 109, 110, 0.4);
+}
+
+.banner-rating {
+  color: #f5c518;
+  font-size: 0.95rem;
+  font-weight: 600;
+}
