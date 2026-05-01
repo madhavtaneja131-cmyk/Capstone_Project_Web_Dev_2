@@ -1,5 +1,5 @@
 import { createContext, useContext, useState } from "react";
-import { profiles } from "../data/moviesData";
+import { profiles } from "../Data/MoviesData";
 
 const ProfileContext = createContext();
 
