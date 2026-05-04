@@ -4,7 +4,7 @@ function Footer() {
   return (
     <footer className="footer">
       <div className="footer-top">
-        <h2 className="footer-logo">NETFLIX</h2>
+        <h2 className="footer-logo">CinePlay</h2>
         <p className="footer-tagline">Watch anywhere. Cancel anytime.</p>
       </div>
 
@@ -36,7 +36,7 @@ function Footer() {
       </div>
 
       <div className="footer-bottom">
-        <p>© 2026 Netflix Clone — Made with ❤️ as Capstone Project</p>
+        <p>© 2026 CinePlay — Made with ❤️ as Capstone Project</p>
       </div>
     </footer>
   );

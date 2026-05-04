@@ -6,6 +6,8 @@ const ProfileContext = createContext();
 export const ProfileProvider = ({ children }) => {
   const [activeProfile, setActiveProfile] = useState(null);
   const [continueWatching, setContinueWatching] = useState([]);
+  const [watchlist, setWatchlist] = useState([]);
+  const [myVideos, setMyVideos] = useState([]);
 
   const addToContinueWatching = (movie) => {
     setContinueWatching((prev) => {
@@ -15,8 +17,27 @@ export const ProfileProvider = ({ children }) => {
     });
   };
 
+  const addToWatchlist = (movie) => {
+    setWatchlist((prev) => {
+      const exists = prev.find((m) => m.id === movie.id);
+      if (exists) return prev.filter((m) => m.id !== movie.id);
+      return [...prev, movie];
+    });
+  };
+
+  const isInWatchlist = (id) => watchlist.some((m) => m.id === id);
+
+  const addMyVideo = (video) => {
+    setMyVideos((prev) => [...prev, video]);
+  };
+
   return (
-    <ProfileContext.Provider value={{ activeProfile, setActiveProfile, profiles, continueWatching, addToContinueWatching }}>
+    <ProfileContext.Provider value={{
+      activeProfile, setActiveProfile, profiles,
+      continueWatching, addToContinueWatching,
+      watchlist, addToWatchlist, isInWatchlist,
+      myVideos, addMyVideo,
+    }}>
       {children}
     </ProfileContext.Provider>
   );

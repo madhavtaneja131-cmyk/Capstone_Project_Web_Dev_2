@@ -199,3 +199,68 @@
   margin-top: 8px;
   font-weight: 600;
 }
+.youtube-player {
+  width: 100%;
+  height: 500px;
+  border: none;
+  display: block;
+}
+.open-yt-btn {
+  background: #e50914;
+  color: #fff;
+  border: none;
+  padding: 14px 30px;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  font-weight: 700;
+  cursor: pointer;
+  margin-top: 20px;
+  transition: background 0.2s;
+}
+
+.open-yt-btn:hover {
+  background: #b20710;
+}.open-yt-btn {
+  background: #e50914;
+  color: #fff;
+  border: none;
+  padding: 14px 30px;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  font-weight: 700;
+  cursor: pointer;
+  margin-top: 20px;
+  transition: background 0.2s;
+}
+
+.open-yt-btn:hover {
+  background: #b20710;
+}
+.back-btn {
+  background: rgba(255,255,255,0.15);
+  color: #fff;
+  border: 1px solid #555;
+  padding: 10px 22px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 1rem;
+  text-decoration: none;
+  transition: background 0.2s;
+  display: inline-block;
+}
+
+.back-btn:hover {
+  background: rgba(255,255,255,0.3);
+  color: #fff;
+}
+.back-btn {
+  position: relative;
+  z-index: 999;
+  cursor: pointer;
+  pointer-events: all;
+}
+
+.watch-topbar {
+  position: relative;
+  z-index: 999;
+}

@@ -1,25 +1,28 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { movies } from "../Data/MoviesData";
+import { fetchByGenre } from "../Data/MoviesData";
 import { useProfile } from "../Context/ProfileContext";
 import "./Categories.css";
 
-const allMovies = [
-  ...movies.trending,
-  ...movies.action,
-  ...movies.comedy,
-];
-
-const genres = ["All", "Sci-Fi", "Crime", "Thriller", "Drama", "Action", "Comedy", "Romance"];
+const genres = ["All", "Action", "Comedy", "Thriller", "Drama", "Sci-Fi", "Crime", "Romance"];
 
 function Categories() {
   const [selected, setSelected] = useState("All");
+  const [movies, setMovies] = useState([]);
+  const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
   const { addToContinueWatching } = useProfile();
 
-  const filtered = selected === "All"
-    ? allMovies
-    : allMovies.filter((m) => m.genre === selected);
+  useEffect(() => {
+    const loadMovies = async () => {
+      setLoading(true);
+      const query = selected === "All" ? "popular" : selected;
+      const data = await fetchByGenre(query);
+      setMovies(data);
+      setLoading(false);
+    };
+    loadMovies();
+  }, [selected]);
 
   return (
     <div className="cat-page">
@@ -37,39 +40,51 @@ function Categories() {
         ))}
       </div>
 
-      <div className="cat-grid">
-        {filtered.length > 0 ? (
-          filtered.map((movie) => (
-            <div
-              key={movie.id}
-              className="cat-card"
-              onClick={() => {
-                addToContinueWatching(movie);
-                navigate(`/watch/${movie.id}`);
-              }}
-            >
-              {/* Background Image */}
-              <img
-                src={movie.img}
-                alt={movie.title}
-                className="cat-card-bg"
-              />
-              <div className="cat-card-gradient" />
-
-              {/* Info — hamesha visible */}
-              <div className="cat-card-info">
-                <h3 className="cat-card-title">{movie.title}</h3>
-                <p className="cat-card-meta">
-                  {movie.genre} • ⭐ {movie.rating}
-                </p>
-                <button className="cat-play-btn">▶ Play Now</button>
+      {loading ? (
+        <p style={{ color: "#aaa", textAlign: "center", marginTop: "50px" }}>
+          Loading...
+        </p>
+      ) : (
+        <div className="cat-grid">
+          {movies.length > 0 ? (
+            movies.map((movie) => (
+              <div
+                key={movie.id}
+                className="cat-card"
+                onClick={() => {
+                  addToContinueWatching(movie);
+                  navigate(`/watch/${movie.id}`);
+                }}
+              >
+                <img
+                  src={
+                    movie.img &&
+                    !movie.img.includes("resizing.flixster") &&
+                    !movie.img.includes("undefined")
+                      ? movie.img
+                      : `https://picsum.photos/seed/${movie.id}/300/450`
+                  }
+                  alt={movie.title}
+                  className="cat-card-bg"
+                  onError={(e) =>
+                    (e.target.src = `https://picsum.photos/seed/${movie.id}/300/450`)
+                  }
+                />
+                <div className="cat-card-gradient" />
+                <div className="cat-card-info">
+                  <h3 className="cat-card-title">{movie.title}</h3>
+                  <p className="cat-card-meta">
+                    ⭐ {movie.vote_average?.toFixed(1)}
+                  </p>
+                  <button className="cat-play-btn">▶ Play Now</button>
+                </div>
               </div>
-            </div>
-          ))
-        ) : (
-          <p className="no-result">No movies in this category.</p>
-        )}
-      </div>
+            ))
+          ) : (
+            <p className="no-result">No movies found.</p>
+          )}
+        </div>
+      )}
     </div>
   );
 }

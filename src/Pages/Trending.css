@@ -1,0 +1,88 @@
+.trending-page {
+  min-height: 100vh;
+  background: #141414;
+  padding: 100px 5% 60px;
+}
+
+.trending-title {
+  font-size: 2.5rem;
+  font-weight: 900;
+  color: #fff;
+  margin-bottom: 8px;
+}
+
+.trending-sub {
+  color: #aaa;
+  font-size: 1rem;
+  margin-bottom: 40px;
+}
+
+.trending-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.trending-card {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  background: #1a1a1a;
+  border-radius: 10px;
+  padding: 12px;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.2s;
+}
+
+.trending-card:hover {
+  background: #2a2a2a;
+  transform: scale(1.02);
+}
+
+.trending-number {
+  font-size: 2.5rem;
+  font-weight: 900;
+  color: #e50914;
+  min-width: 50px;
+  text-align: center;
+}
+
+.trending-card img {
+  width: 80px;
+  height: 110px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.trending-info {
+  flex: 1;
+}
+
+.trending-info h3 {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 6px;
+}
+
+.trending-info p {
+  color: #aaa;
+  font-size: 0.9rem;
+  margin-bottom: 12px;
+}
+
+.trending-play-btn {
+  background: #e50914;
+  color: #fff;
+  border: none;
+  padding: 8px 20px;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.trending-play-btn:hover {
+  background: #b20710;
+}
